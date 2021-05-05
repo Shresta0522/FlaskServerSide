@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+    <nav class="navbar navbar-dark bg-dark">
+        <h5 class="text-white h4">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/">Logout</a>
+        </h5>
+        
+    </nav>
+
+</div>
+
+
+<h4>BOOKSHELF</h4>
+<div style="text-align: center;margin-left: 15%;margin-right: 15%;">
+    <h3>MY shelf</h3><br>
+    <br>
+    <table class="table" style="background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0PDw0ODQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURExUYHSggGBolGxUVITEhJSkrLi4uFx8zODM4NygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAMIBAwMBIgACEQEDEQH/xAAZAAADAQEBAAAAAAAAAAAAAAAAAQIDBAf/xAAiEAEBAQEAAgIDAQADAAAAAAAAAQIRMXFBUQMhkbESYYH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9p4BKYJ4XF8LgJ4OGAICgDBADAAAAAAAA4OT6Bgnk+p/ByfU/iiAuT6n8HJ9T+GALk+oOT6hgC5Pqfwcn1P4YAuT6g5DAFwwAAAAAAAcpAGnE2DOl8BmS7CoJKwwBAWEBmQAwAAAAAAAYEpgRKICB8IAAAAAAAAAAAAAAjT0wNWNc9JANuJsTjfPTXgMrCsaWIsBJWKpAmUDUKUFAjAwRgVBkBnKQBfC4M1QEVh8VP2DILuU2AQAA+EcqrAQDsIAAAR4OUWJ8A0Cc6WBKxvnoiB0eUWIxvnpt5BjYVaWIsBKdZWQIlMtZKUFghAUClMCohps4ClZqZTBpwuFjXPTSwCl77TrJ8VL0GNhNdZZ2ASs6/iQDW5Z2HjXPTS5+gYhX/EwZlZ0yBHhWdHZ1HgG8DPGmoJp43z0LC4DfyjURjXPTbyDGlWmogEo1lpYQM5VFrIlAzlIAoFDBPj0uUk+PQNFY1z0iGDbibE51z00Apep1lVg70GNJpqMwCsb56SAb8gYdAIUzlVAMUyBDT8e+FYkHSmxn+PfPTf/ALBlYeN89KsRYDao1E41z00oIhXJ2DN+L4BCdZbayiwGcp0WFACpSsTAWaemAn69NIgS89A04M64cKwGqbE5vPTQE+WWo2sKzoMAdiQMEAYqlPeUQGkqmcq5QAppAmn4989IIHV5/cTYz/Hvnpv5/cBjYedc9KsRQaVBS89KoDGufq+FayzVjfP1fAJsTY21lnYCILDsAIlUNRMoLNMMFZvPTWftiedcBpYebw/1SsBZWJl4sGep1jXTYz3noMgOUArjLef5/jXNOwHOqHvCIDSGmGBeAryizgHF/j3z0joB039/tFicb56aUGdKXiqVAERgvG+fq+P8PUZqzr4+ATSsaaiAKDWRw5QZqlVrKICjTKYLxrjaWVzqxrgNbCl4qXpWApOoUvFgz4TTgBzNMa+KyMGussd442xv4p6yDlVKreEQFHShwEWH1ViLAOLxriJTBtUFnXFAlN/SyAgVnPQlBcoqYYAjAHi/Z7whpjfxQZcDbeGXABkAXnXG0vXOrOuA1sKVUvSsBQQQMDVYgDa/j38VkAb6yw3lr+PfxT3kHOcVrKQVCsEMGdhyqsRYCjlTKYLIpTAIs4sAmU02cV0DAAAAAvG/i+D3hmvG/igzsDXeWXAMEYKzrjaXrnVnXAbcAmoAZWJsa6iLAZhViQNpjfxf/KyMGmoz1F518UagMoYsAGVhgGdhxdiPAGaTgGZGATzigBQy4AMAAAAC8b+L4G8oVnXxQQcVqIAwAAAANMb+KdjJedfFAqmtLEUEmKACpUgDpHKKCYYAAWAAg1WJAwRgYIwBGAAIwAAAAADlKwAAAAAAAAAFwqACQQAwAAMACoAAAAAWgAI4AAOAAAAAAAAAAAAAAAAAAAAD/9k='); color: darkslateblue;">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">name</th>
+            <th scope="col">isbn</th>
+            <th scope="col">title</th>
+            <th scope="col">author</th>
+            <th scope="col">year</th>
+            <th scope="col">#</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for Shelf in users %}
+          <tr>
+            <form action="{{url_for('bookshelf')}}" method="POST">
+            <td>{{Shelf.name}}</td>
+            <input type="hidden" name="name" value="{{Shelf.name}}">
+            <td>{{Shelf.isbn}}</td>
+            <input type="hidden" name="isbn" value="{{Shelf.isbn}}">
+
+            <td>{{Shelf.title}}</td>
+            <input type="hidden" name="title" value="{{Shelf.title}}">
+
+            <td>{{Shelf.author}}</td>
+            <input type="hidden" name="author" value="{{Shelf.author}}">
+
+            <td>{{Shelf.year}}</td>
+            <input type="hidden"name="year" value="{{Shelf.year}}">
+
+            <td> <button type="submit" class="btn btn-warning" name="delete" >Delete</button></td>
+          </form>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+
+
+{% endblock %}
+

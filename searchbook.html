@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+    <nav class="navbar navbar-dark bg-dark">
+        <h5 class="text-white h4">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/">Logout</a>
+        </h5>
+        
+    </nav>
+
+</div>
+
+
+<h4>Search Page</h4>
+<!-- <div style="text-align: center;margin-left: 15%;margin-right: 15%;">
+    <div>
+        <form class="example" action="/search"  method="post">
+            <input type="text" placeholder="Search.." name="search" class="form-control"required>
+            <button type="submit" class="btn btn-primary">Search</button>
+          <br>
+        </form>
+    </div>
+</div>
+<div>
+  <br>
+
+  <div>
+    <form action="{{url_for('bookshelf')}}">
+      <input type="submit" value="Myshelf">
+    </form>
+  </div>
+  <br>
+        <table class="table">
+            <thead class="thead-dark" style="margin: auto;">
+                
+                <th ><h5 >isbn</h5></th>
+                <th ><h5 >Title of the book</h5></th>
+                <th ><h5 >Author</h5></th>
+                <th ><h5 >Year</h5></th>
+              <tr>
+                <br>
+                <br>
+              </tr>
+            </thead>
+            <tbody>
+              {% for book in books %}
+              <tr>
+        
+
+                    <td><h4><a href="/rr/{{book.isbn}}" >{{book.isbn}}</a> </h4></td>
+                    <td><h4>{{book.title}}</h4></td>
+                    <td><h4>{{book.author}}</h4></td>
+                    <td><h4>{{book.year}}</h4></td>
+              {% endfor %}
+                
+
+
+            </tr>
+              
+            </tbody>
+          </table>
+        <br>
+        <br>
+        
+    
+</div> -->
+<div class="container-fluid">
+
+  
+  <hr>
+
+  <!--Keyword clouds go here -->
+
+  <div class="row">
+
+    <!--Search within review here -->
+    <div class="col-sm-5">
+      <h2>Search within reviews:</h2>
+      <form class="form-inline" action="/search"  method="POST"  style="padding-left: 25%;">
+        <div class="form-group">
+          <input class="form-control input-lg" name="search" id="query" type="text" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+    
+    <hr>
+    <div class="col-sm-4">
+      <br>
+      <form action="{{url_for('bookshelf')}}">
+        <button type="submit" class="btn btn-success">MySelf</button>
+      </form>
+      
+    </div>
+  </div>
+  <hr>
+  
+  <!--Reviews go here -->
+  <div id="reviews" class="reviews">
+    <table class="table" style="background-image: url('http://getdrawings.com/watercolors/watercolor-book-19.jpg');color: brown;">
+      <thead class="thead-dark" style="margin: auto;">
+          
+          <th ><h5 >isbn</h5></th>
+          <th ><h5 >Title of the book</h5></th>
+          <th ><h5 >Author</h5></th>
+          <th ><h5 >Year</h5></th>
+        <tr>
+          <br>
+          <br>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+  
+
+              <td><h4><a href="/rr/{{book.isbn}}" >{{book.isbn}}</a> </h4></td>
+              <td><h4><b>{{book.title}}</b></h4></td>
+              <td><h4><b>{{book.author}}</b></h4></td>
+              <td><h4>{{book.year}}</h4></td>
+        {% endfor %}
+          
+
+
+      </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  
+
+
+{% endblock %}
+
